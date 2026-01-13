@@ -70,11 +70,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $active_group = 'default';
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => '127.0.0.1',
 	'username' => 'root',
 	'password' => '',
 	'database' => 'school',
 	'dbdriver' => 'mysqli',
+	'port'	=> 3307,
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

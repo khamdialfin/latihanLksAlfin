@@ -2,7 +2,7 @@
 	<div class="p-2 d-flex justify-content-between border">
 		<h4 class="h5">Data Guru</h4>
 		<div>
-			<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#backdropStatic"
+			<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaltambahguru"
 				id="tomboltambahguru"><i class="fas fa-plus"></i>Tambah Guru</button>
 		</div>
 	</div>
@@ -34,3 +34,13 @@
 		</table>
 	</div>
 </div>
+<div class="modal fade" id="modaltambahguru">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- /.isi modal disini -->
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

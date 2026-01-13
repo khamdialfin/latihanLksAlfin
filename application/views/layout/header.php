@@ -24,6 +24,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<link href="https://cdn.datatables.net/responsive/3.0.7/css/responsive.dataTables.css">
 	<script src="https://cdn.datatables.net/responsive/3.0.7/js/dataTables.responsive.js"></script>
 	<script src="https://cdn.datatables.net/responsive/3.0.7/js/responsive.dataTables.js"></script>
+	<!-- SweetAlert2 -->
+	<link rel="stylesheet" href="<?= base_url('adminlte') ?>/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+	<!-- Toastr -->
+	<link rel="stylesheet" href="<?= base_url('adminlte') ?>/plugins/toastr/toastr.min.css">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="<?= base_url('adminlte/') ?>dist/css/adminlte.min.css">
 </head>

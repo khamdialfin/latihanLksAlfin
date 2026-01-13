@@ -28,9 +28,9 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-
 <!-- jQuery -->
 <script src="<?= base_url('adminlte/') ?>plugins/jquery/jquery.min.js"></script>
+
 <!-- Bootstrap 4 -->
 <script src="<?= base_url('adminlte/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
@@ -68,6 +68,10 @@
 		});
 	});
 </script>
+<script>
+	var base_url = '<?= base_url() ?>';
+</script>
+<script src="<?= base_url('assets/js/guru.js') ?>"></script>
 </body>
 
 </html>
