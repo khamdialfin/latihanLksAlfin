@@ -3,6 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Guru extends CI_Controller
 {
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -10,11 +11,20 @@ class Guru extends CI_Controller
 		$this->load->library('form_validation');
 	}
 
+	/**
+	 * index()
+	 * -------------------------
+	 * List data + siapkan data edit
+	 */
 	public function index()
 	{
-		$result = $this->Gurumodel->getAllGuru();
-		$data['guru'] = $result;
+		$data['guru'] = $this->Gurumodel->get_all();
 
+		$data['edit'] = null;
+		if ($this->input->get('edit')) {
+			$data['edit'] = $this->Gurumodel
+				->get_by_id($this->input->get('edit'));
+		}
 		$data['title'] = 'Data Guru';
 
 		$this->load->view('layout/header', $data);
@@ -24,54 +34,58 @@ class Guru extends CI_Controller
 		$this->load->view('layout/footer');
 	}
 
-	public function tambah()
+	/**
+	 * save()
+	 * -------------------------
+	 * UPDATE OR CREATE (1 METHOD)
+	 */
+	public function save()
 	{
-		if ($this->input->is_ajax_request()) {
-			$this->load->view('masterData/guru/create');
-		} else {
-			show_404();
-		}
-	}
+		$id = $this->input->post('id_guru');
 
-	public function store()
-	{
-		if (!$this->input->is_ajax_request()) {
-			show_404();
-			return;
-		}
-
-		// Server-side validation
-		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
-		$this->form_validation->set_rules('no_telp', 'No Telepon', 'trim|required|numeric');
-		$this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
-		$this->form_validation->set_rules('pengampu', 'Guru Pengampu', 'trim|required');
+		// VALIDASI
+		$this->form_validation->set_rules('nama', 'Nama', 'required');
+		$this->form_validation->set_rules('no_telp', 'No Telp', 'required');
+		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
+		$this->form_validation->set_rules('pengampu', 'Pengampu', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			// Jika validasi gagal
-			$errors = $this->form_validation->error_array();
-			echo json_encode([
-				'status' => 'error',
-				'messages' => $errors
-			]);
-			return;
+			// kembali ke modal sesuai kondisi
+			if ($id) {
+				redirect('guru?edit=' . $id . '#modal-form');
+			} else {
+				redirect('guru#modal-form');
+			}
 		}
 
-		// Jika validasi berhasil, insert data
 		$data = [
-			'nama' => $this->input->post('nama'),
-			'no_telp' => $this->input->post('no_telp'),
-			'alamat' => $this->input->post('alamat'),
-			'pengampu' => $this->input->post('pengampu')
+			'nama'     => $this->input->post('nama'),
+			'no_telp'  => $this->input->post('no_telp'),
+			'alamat'   => $this->input->post('alamat'),
+			'pengampu' => $this->input->post('pengampu'),
 		];
 
-		$insert = $this->Gurumodel->insert($data);
-
-		if ($insert) {
-			echo json_encode(['status' => 'success', 'message' => 'Data guru berhasil ditambahkan']);
+		// ===== UPDATE OR CREATE =====
+		if ($id) {
+			$this->Gurumodel->update($id, $data);
 		} else {
-			echo json_encode(['status' => 'error', 'message' => 'Gagal menambahkan data guru']);
+			$this->Gurumodel->insert($data);
 		}
+
+		redirect('guru');
+	}
+
+	/**
+	 * destroy()
+	 * -------------------------
+	 * DELETE
+	 */
+	public function destroy($id)
+	{
+		if ($id) {
+			$this->Gurumodel->delete($id);
+		}
+
+		redirect('guru');
 	}
 }
-
-/* End of file Controllername.php */
