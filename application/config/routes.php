@@ -49,8 +49,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'dashboard';
+$route['default_controller'] = 'auth';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['DataSiswa'] = 'Siswa/index';
-$route['Datakelas'] = 'Kelas/index';
+
+// Guru Routes
+$route['guru'] = 'guru/index';
+$route['guru/create'] = 'guru/create';
+$route['guru/store'] = 'guru/store';
+$route['guru/edit/(:num)'] = 'guru/edit/$1';
+$route['guru/update/(:num)'] = 'guru/update/$1';
+$route['guru/destroy/(:num)'] = 'guru/destroy/$1';
+
+
+// Auth routes
+$route['auth'] = 'auth/index';
+$route['auth/login'] = 'auth/login';
+$route['auth/logout'] = 'auth/logout';
+
+// Dashboard route
+$route['dashboard'] = 'dashboard/index';

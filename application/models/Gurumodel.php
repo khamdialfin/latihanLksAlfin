@@ -12,10 +12,30 @@ class Gurumodel extends CI_Model
 		return $query->result();
 	}
 
+
+	public function getGuruById($id)
+	{
+		$this->db->where('id_guru', $id);
+		$query = $this->db->get('guru');
+		return $query->row();
+	}
+
 	public function insert($data)
 	{
 		return $this->db->insert('guru', $data);
 	}
-}
 
-/* End of file ModelName.php */
+	// TAMBAHKAN METHOD INI
+	public function update($id, $data)
+	{
+		$this->db->where('id_guru', $id);
+		return $this->db->update('guru', $data);
+	}
+
+	// TAMBAHKAN METHOD INI
+	public function delete($id)
+	{
+		$this->db->where('id_guru', $id);
+		return $this->db->delete('guru');
+	}
+}

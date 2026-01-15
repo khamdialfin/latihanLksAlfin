@@ -6,19 +6,19 @@
 	<div class="modal-body">
 		<div class="form-group">
 			<label>Nama</label>
-			<input type="text" name="nama" class="form-control" required>
+			<input type="text" name="nama" class="form-control">
 		</div>
 		<div class="form-group">
 			<label>No Telepon</label>
-			<input type="text" name="no_telp" class="form-control" required>
+			<input type="text" name="no_telp" class="form-control">
 		</div>
 		<div class="form-group">
 			<label>Alamat</label>
-			<textarea name="alamat" class="form-control" required></textarea>
+			<textarea name="alamat" class="form-control"></textarea>
 		</div>
 		<div class="form-group">
 			<label>Guru Pengampu</label>
-			<input type="text" name="pengampu" class="form-control" required>
+			<input type="text" name="pengampu" class="form-control">
 		</div>
 	</div>
 	<div class="modal-footer justify-content-between">

@@ -30,4 +30,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<link rel="stylesheet" href="<?= base_url('adminlte') ?>/plugins/toastr/toastr.min.css">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="<?= base_url('adminlte/') ?>dist/css/adminlte.min.css">
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
